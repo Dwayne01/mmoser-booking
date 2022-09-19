@@ -5,7 +5,33 @@ import {
 } from "baseui/card";
 import { Button } from "baseui/button";
 
-export default function DeskCard({ desk, bookings, status, onBookClick }) {
+export default function DeskCard({ desk, bookings, onBookClick }) {
+
+
+
+  const handleGetStatus = () => {
+    let now = Date.now();
+
+    let fiveMinutes = 5 * 60 * 1000
+    
+    let res = bookings.find(booking => now >=  booking.start - fiveMinutes && now <= booking.end  )
+  
+
+    if (!res) return 'Available';
+
+    let fiveMinutesToTime = res.start - fiveMinutes
+  
+
+    if (now >= res.start) {
+      return 'Booked'
+    }else if(now >= res.end){
+      return 'Availables'
+    } else if(now >= fiveMinutesToTime && now <= res.start ) {
+      return 'Pending'
+    }
+
+  }
+
   return (
     <Card
       headerImage={desk.image}
@@ -21,14 +47,14 @@ export default function DeskCard({ desk, bookings, status, onBookClick }) {
         }
       }}>
       <StyledBody>
-        <b>Status: {status}</b>
+        <b>Status: {handleGetStatus()}</b>
         <br />
         <b>Today's Bookings</b>:
         {bookings.map(booking => <BookingItem key={booking.id} booking={booking} />)}
       </StyledBody>
       <StyledAction>
         <Button
-          onClick={onBookClick}
+          onClick={() => onBookClick(desk)}
           overrides={{
             BaseButton: { style: { width: "100%" } }
           }}

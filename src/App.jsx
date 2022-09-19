@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import CreateBookingPage from './pages/CreateBooking/CreateBookingPage';
 import DesksPage from './pages/Desks/DesksPage';
 
+
 const engine = new Styletron();
 const Centered = styled('div', {
   display: 'flex',

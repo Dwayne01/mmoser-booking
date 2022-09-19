@@ -1,34 +1,41 @@
+import React from "react"
+import { useEffect, useState } from "react"
+import { fetchAllBookings, fetchAllDesks } from "../../api/desk"
 import DeskCard from "./components/DeskCard"
 
 export default function DesksPage() {
-  const desks = [
-    {
-      "id": 1,
-      "name": "Desk A",
-      "image": "https://images.unsplash.com/photo-1611269154421-4e27233ac5c7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "id": 2,
-      "name": "Desk B",
-      "image": "https://images.unsplash.com/photo-1476365518243-f738bf58443d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "id": 3,
-      "name": "Desk C",
-      "image": "https://images.unsplash.com/photo-1486946255434-2466348c2166?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "id": 4,
-      "name": "Desk D",
-      "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "id": 5,
-      "name": "Desk E",
-      "image": "https://images.unsplash.com/photo-1542546068979-b6affb46ea8f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
-    }
-  ]
+  const [desks, setDesks] = useState([])
+  const [bookings, setBookings] = useState([])
+
+  
+
+  useEffect(() => {
+    handleFetch()
+    handleBookings()
+  }, [])
+
+  const handleFetch = async () => {
+    let res = await fetchAllDesks();
+    setDesks(res)
+  } 
+
+
+  const handleBookings = async () => {
+    let res = await fetchAllBookings();
+    setBookings(res)
+  } 
+
+
+  let newDesks = desks.map(desk => {
+    let newDesk = bookings.filter(booking => booking.deskId === desk.id)
+    return { ...desk, bookings: newDesk }
+  });
+
+  const onBookClick = () => {
+    window.location.href = '/book'
+  }
+
   return <div>
-    {desks.map(desk => <DeskCard key={desk.id} desk={desk} bookings={[]} status='available' />)}
+    {newDesks.map(desk => <DeskCard key={desk.id} desk={desk} bookings={desk.bookings} onBookClick={onBookClick} />)}
   </div>
 }
