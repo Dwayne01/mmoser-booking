@@ -9,10 +9,8 @@ export default function DeskCard({ desk, bookings, status, onBookClick }) {
   return (
     <Card headerImage={desk.image} title={desk.name}>
       <StyledBody>
-        Proin ut dui sed metus pharetra hend rerit vel non
-        mi. Nulla ornare faucibus ex, non facilisis nisl.
-        Proin ut dui sed metus pharetra hend rerit vel non
-        mi. Nulla ornare faucibus ex, non facilisis nisl.
+        <b>Today's Bookings</b>:
+        {bookings.map(booking => <BookingItem key={booking.id} booking={booking} />)}
       </StyledBody>
       <StyledAction>
         <Button
@@ -26,4 +24,15 @@ export default function DeskCard({ desk, bookings, status, onBookClick }) {
       </StyledAction>
     </Card>
   );
+}
+
+function BookingItem({ booking }) {
+  return <div>
+    {formatTS(booking.start)} - {formatTS(booking.end)}
+  </div>
+}
+
+function formatTS(ts) {
+  const date = new Date(ts)
+  return date.getHours() + ':' + date.getMinutes()
 }

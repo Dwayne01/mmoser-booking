@@ -3,6 +3,7 @@ import { Provider as StyletronProvider } from 'styletron-react';
 import { LightTheme, BaseProvider, styled } from 'baseui';
 import { StatefulInput } from 'baseui/input';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import CreateBookingPage from './pages/CreateBooking/CreateBookingPage';
 import DesksPage from './pages/Desks/DesksPage';
 
 const engine = new Styletron();
