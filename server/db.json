@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Desk A",
-      "image": "https://images.unsplash.com/photo-1611269154421-4e27233ac5c7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=9870&q=80"
+      "image": "https://images.unsplash.com/photo-1611269154421-4e27233ac5c7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
     },
     {
       "id": 2,
@@ -32,6 +32,42 @@
       "deskId": 4,
       "start": 1663520400000,
       "end": 1663522200000
+    },
+    {
+      "id": 2,
+      "deskId": 2,
+      "start": 1663520400000,
+      "end": 1663522200000
+    },
+    {
+      "id": 3,
+      "deskId": 3,
+      "start": 1663526700000,
+      "end": 1663530300000
+    },
+    {
+      "id": 4,
+      "deskId": 1,
+      "start": 1663518600000,
+      "end": 1663524000000
+    },
+    {
+      "id": 5,
+      "deskId": 5,
+      "start": 1663527600000,
+      "end": 1663534800000
+    },
+    {
+      "id": 6,
+      "deskId": 2,
+      "start": 1663527600000,
+      "end": 1663534800000
+    },
+    {
+      "id": 7,
+      "deskId": 1,
+      "start": 1663526700000,
+      "end": 1663530300000
     }
   ]
 }

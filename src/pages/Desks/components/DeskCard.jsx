@@ -7,7 +7,19 @@ import { Button } from "baseui/button";
 
 export default function DeskCard({ desk, bookings, status, onBookClick }) {
   return (
-    <Card headerImage={desk.image} title={desk.name}>
+    <Card
+      headerImage={desk.image}
+      title={desk.name}
+      overrides={{
+        HeaderImage: {
+          style: ({ $theme }) => ({
+            height: '400px',
+            width: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center'
+          })
+        }
+      }}>
       <StyledBody>
         <b>Today's Bookings</b>:
         {bookings.map(booking => <BookingItem key={booking.id} booking={booking} />)}

@@ -1,25 +1,28 @@
-import { useState } from 'react'
-import { TimePicker } from 'baseui/timepicker'
+import { useState, useEffect } from 'react'
+import CreateBookingForm from './CreateBookingForm'
 
-export default function CreateBookingPage({ startTime, endTime, onChange }) {
+export default function CreateBookingPage() {
+  const desks = [] // TODO
+  const [form, setForm] = useState({
+    deskId: 1,
+    start: new Date(),
+    end: new Date(),
+  })
+
+  const handleChange = (key, value) => setForm(prev => ({ ...prev, [key]: value }))
+
+  const handleSubmit = () => {
+    // TODO
+    console.log('submit')
+  }
 
   return (
-    <div>
-      Create Booking Page
-      <FormControl label="StartTime"
-      >
-
-      </FormControl>
-      <TimePicker
-        value={startTime}
-        onChange={date => onChange({ startTime: date })}
-      />
-      <FormControl label="EndTime"      >
-        <TimePicker
-          value={endTime}
-          onChange={date => onChange({ endTime: date })}
-        />
-      </FormControl>
-    </div>
+    <CreateBookingForm
+      desks={desks}
+      deskId={form.deskId}
+      start={form.start}
+      end={form.end}
+      onChange={handleChange}
+      onSubmit={handleSubmit} />
   )
 }
