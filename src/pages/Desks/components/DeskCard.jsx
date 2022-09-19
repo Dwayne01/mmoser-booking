@@ -21,6 +21,8 @@ export default function DeskCard({ desk, bookings, status, onBookClick }) {
         }
       }}>
       <StyledBody>
+        <b>Status: {status}</b>
+        <br />
         <b>Today's Bookings</b>:
         {bookings.map(booking => <BookingItem key={booking.id} booking={booking} />)}
       </StyledBody>
