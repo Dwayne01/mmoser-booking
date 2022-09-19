@@ -3,6 +3,7 @@ import { FormControl } from 'baseui/form-control'
 import { TimePicker } from 'baseui/timepicker'
 import { Select } from "baseui/select"
 import { DisplayMedium } from 'baseui/typography'
+import { Button } from 'baseui/button'
 
 export default function CreateBookingForm({ desks, deskId, start, end, onChange, onSubmit }) {
   return (
